@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>A4._2_BindingObjetoNegocio</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets\shield.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\arrow.png" />
+    <None Remove="Assets\avengers.png" />
+    <None Remove="Assets\xmen.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\shield.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\arrow.png" />
+    <Resource Include="Assets\avengers.png" />
+    <Resource Include="Assets\xmen.png" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,113 @@
+﻿<Window x:Class="Superheroes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Superheroes" d:DataContext="{d:DesignInstance Type=local:Superheroe}"
+        mc:Ignorable="d"
+        Title="Superhéroes - SOLUCIÓN"
+        Height="700"
+        Width="1000"
+        MinHeight="500"
+        MinWidth="700"
+        Background="AliceBlue"
+        >
+       
+    <Window.Resources>
+                
+        <!-- Convertidores-->
+        <local:FondoConverter x:Key="conversorFondo"></local:FondoConverter>
+        <local:VisibilityConverter x:Key="conversorVisibilidad"></local:VisibilityConverter>
+
+        <!-- Estilos para las FLECHAS -->
+        <Style TargetType="Image" x:Key="flechas">
+            <Setter Property="Width"
+                    Value="24"></Setter>
+            <Setter Property="Source"
+                    Value="assets/arrow.png"></Setter>
+        </Style>
+
+        <Style TargetType="Image" x:Key="flechaIzquierda" BasedOn="{StaticResource flechas}">
+            <EventSetter Event="MouseLeftButtonUp" Handler="leftImage_MouseLeftButtonUp"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="flechaDerecha" BasedOn="{StaticResource flechas}">
+            <EventSetter Event="MouseLeftButtonUp" Handler="rightImage_MouseLeftButtonUp"/>
+        </Style>
+
+        <!-- Estilos para el resto de elementos de la VISTA. -->
+        <Style TargetType="TextBlock" x:Key="nombreHéroeVista">
+            <Setter Property="FontSize"
+                    Value="40"></Setter>
+            <Setter Property="Foreground"
+                    Value="White"></Setter>
+            <Setter Property="FontFamily"
+                    Value="Segoe UI Black"></Setter>
+            <Setter Property="Margin"
+                    Value="10,0,0,0"></Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="contador">
+            <Setter Property="FontSize"
+                    Value="20"></Setter>
+            <Setter Property="FontWeight"
+                    Value="Bold"></Setter>
+        </Style>
+
+    </Window.Resources>
+    
+    <DockPanel x:Name="superheroeDockPanel"
+                       Background="{Binding Path=Heroe, Converter={StaticResource conversorFondo}}">
+ 
+        <DockPanel LastChildFill="False" DockPanel.Dock="Top">
+ 
+            <TextBlock DockPanel.Dock="Left" Style="{StaticResource nombreHéroeVista}"
+                       Text="{Binding Path=Nombre}">
+            </TextBlock>
+            
+            <StackPanel Orientation="Horizontal"
+                                DockPanel.Dock="Right"
+                                VerticalAlignment="Bottom">
+                <Image Source="Assets/avengers.png"
+                               Visibility="{Binding Path=Vengador,Converter={StaticResource conversorVisibilidad}}"
+                               Width="40"
+                               Margin="0,0,10,0"></Image>
+                <Image Source="Assets/xmen.png"
+                               Visibility="{Binding Path=Xmen,Converter={StaticResource conversorVisibilidad}}"
+                               Width="60"></Image>
+            </StackPanel>
+        </DockPanel>
+
+        <StackPanel DockPanel.Dock="Bottom"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+            <Image x:Name="leftImage"
+                           Style="{StaticResource flechaIzquierda}"/>
+            <TextBlock x:Name="actualTextBlock"
+                               Style="{StaticResource contador}"
+                               Margin="5,0,0,5"/>
+            <TextBlock Style="{StaticResource contador}"
+                               Text="/"
+                               Margin="0,0,0,5"/>
+            <TextBlock x:Name="totalTextBlock"
+                               Style="{StaticResource contador}"
+                               Margin="0,0,5,5"/>
+            <Image x:Name="rightImage"
+                          Style="{StaticResource flechaDerecha}"
+                          RenderTransformOrigin="0.5,0.5">
+                          <Image.RenderTransform>
+                              <RotateTransform Angle="180"/>
+                          </Image.RenderTransform>
+            </Image>
+        </StackPanel>
+
+        <Image Source="{Binding Path=ImagenRuta}"
+                       Stretch="Fill"
+                       Margin="10"/>
+    </DockPanel>
+</Window>

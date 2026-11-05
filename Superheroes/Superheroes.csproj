@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets\shield.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\arrow.png" />
+    <None Remove="Assets\avengers.png" />
+    <None Remove="Assets\DuendeVerde.jpg" />
+    <None Remove="Assets\IronMan.jpg" />
+    <None Remove="Assets\shield.ico" />
+    <None Remove="Assets\Tormenta.jpg" />
+    <None Remove="Assets\xmen.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\shield.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\arrow.png" />
+    <Resource Include="Assets\avengers.png" />
+    <Resource Include="Assets\DuendeVerde.jpg" />
+    <Resource Include="Assets\IronMan.jpg" />
+    <Resource Include="Assets\shield.ico" />
+    <Resource Include="Assets\Tormenta.jpg" />
+    <Resource Include="Assets\xmen.png" />
+  </ItemGroup>
+
+</Project>
